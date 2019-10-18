@@ -70,39 +70,77 @@
 // -- Primitives vs objects
 
 // Primitives
-var a = 21;
-var b = a;
-a = 46;
-console.log(a, b);
+// var a = 21;
+// var b = a;
+// a = 46;
+// console.log(a, b);
 
 // Objects
-var obj1 = {
-    name: 'John',
-    age: 26
-};
+// var obj1 = {
+//     name: 'John',
+//     age: 26
+// };
 
-var obj2 = obj1;
-obj1.age = 30;
-console.log(obj1.age);
-console.log(obj2.age);
+// var obj2 = obj1;
+// obj1.age = 30;
+// console.log(obj1.age);
+// console.log(obj2.age);
 
 // Functions
-var age = 27;
-var obj = {
-    name: 'Jonas',
-    city: 'London'
-};
+// var age = 27;
+// var obj = {
+//     name: 'Jonas',
+//     city: 'London'
+// };
 
-function change(a, b) {
-    a = 30;
-    b.city = 'San Francisco';
+// function change(a, b) {
+//     a = 30;
+//     b.city = 'San Francisco';
+    
+// }
+
+// change(age, obj);
+// console.log(age);
+// console.log(a);
+// console.log(obj.city);
+
+
+// -- Passing functions as arguments
+
+var years = [1997, 1995, 1987, 2003, 1995];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
 }
 
-change(age, obj);
-console.log(age);
-console.log(obj.city);
+function isFullAge(el) {
+    return el >= 18;
+}
 
+function calculateAge(el) {
+    return 2016 - el;
+}
 
+function maxHeartRate(el) {
+    if(el >= 18 && el <= 81) {
+        return Math.round(266.9 - (9.57 * el));
+    } else {
+        return -1;
+    }
+  
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullAges = arrayCalc(ages, isFullAge);
+var rates = arrayCalc(ages, maxHeartRate);
+
+console.log(ages);
+console.log(fullAges);
+console.log(rates);
 
 
 
