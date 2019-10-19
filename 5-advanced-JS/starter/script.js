@@ -142,36 +142,49 @@
 // console.log(fullAges);
 // console.log(rates);
 
-// - Function returning function
+// - Function returning functions
 
-function  interviewQuestion (job) {
-    if( job === 'designer') {
-        return function(name) {
-            console.log(name + ', can you explain what UX design is?');
-        }
-    } else if (job === 'teacher') {
-        return function (name) {
-            console.log('What subject do you teach, ' + name + '?');
-        }
-    } else  {
-        return function(name) {
-            console.log('Hello ' +  name + ', what do you do?');
-        }
-    }
-}
+// function  interviewQuestion (job) {
+//     if( job === 'designer') {
+//         return function(name) {
+//             console.log(name + ', can you explain what UX design is?');
+//         }
+//     } else if (job === 'teacher') {
+//         return function (name) {
+//             console.log('What subject do you teach, ' + name + '?');
+//         }
+//     } else  {
+//         return function(name) {
+//             console.log('Hello ' +  name + ', what do you do?');
+//         }
+//     }
+// }
 
-var teacherQuestion = interviewQuestion('teacher');
-var designerQuestion = interviewQuestion('designer');
-teacherQuestion('John');
-teacherQuestion('Mark');
-teacherQuestion('Jane');
-designerQuestion('John');
-designerQuestion('Jane');
-designerQuestion('Mark');
+// var teacherQuestion = interviewQuestion('teacher');
+// var designerQuestion = interviewQuestion('designer');
+// teacherQuestion('John');
+// teacherQuestion('Mark');
+// teacherQuestion('Jane');
+// designerQuestion('John');
+// designerQuestion('Jane');
+// designerQuestion('Mark');
 
-interviewQuestion('teacher')('Mark');
+// interviewQuestion('teacher')('Mark');
 
+// -- IIFE
 
+// function game () {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// }
+
+// game();
+
+(function(goodLuck) {
+    var score = Math.random() * 10;
+    console.log(goodLuck);
+    console.log(score >= 5 - goodLuck);
+})(5);
 
 
 
