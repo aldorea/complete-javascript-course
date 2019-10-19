@@ -107,40 +107,70 @@
 
 // -- Passing functions as arguments
 
-var years = [1997, 1995, 1987, 2003, 1995];
+// var years = [1997, 1995, 1987, 2003, 1995];
 
-function arrayCalc(arr, fn) {
-    var arrRes = [];
-    for (var i = 0; i < arr.length; i++) {
-        arrRes.push(fn(arr[i]));
-    }
-    return arrRes;
-}
+// function arrayCalc(arr, fn) {
+//     var arrRes = [];
+//     for (var i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     }
+//     return arrRes;
+// }
 
-function isFullAge(el) {
-    return el >= 18;
-}
+// function isFullAge(el) {
+//     return el >= 18;
+// }
 
-function calculateAge(el) {
-    return 2016 - el;
-}
+// function calculateAge(el) {
+//     return 2016 - el;
+// }
 
-function maxHeartRate(el) {
-    if(el >= 18 && el <= 81) {
-        return Math.round(266.9 - (9.57 * el));
-    } else {
-        return -1;
-    }
+// function maxHeartRate(el) {
+//     if(el >= 18 && el <= 81) {
+//         return Math.round(266.9 - (9.57 * el));
+//     } else {
+//         return -1;
+//     }
   
+// }
+
+// var ages = arrayCalc(years, calculateAge);
+// var fullAges = arrayCalc(ages, isFullAge);
+// var rates = arrayCalc(ages, maxHeartRate);
+
+// console.log(ages);
+// console.log(fullAges);
+// console.log(rates);
+
+// - Function returning function
+
+function  interviewQuestion (job) {
+    if( job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you explain what UX design is?');
+        }
+    } else if (job === 'teacher') {
+        return function (name) {
+            console.log('What subject do you teach, ' + name + '?');
+        }
+    } else  {
+        return function(name) {
+            console.log('Hello ' +  name + ', what do you do?');
+        }
+    }
 }
 
-var ages = arrayCalc(years, calculateAge);
-var fullAges = arrayCalc(ages, isFullAge);
-var rates = arrayCalc(ages, maxHeartRate);
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+teacherQuestion('John');
+teacherQuestion('Mark');
+teacherQuestion('Jane');
+designerQuestion('John');
+designerQuestion('Jane');
+designerQuestion('Mark');
 
-console.log(ages);
-console.log(fullAges);
-console.log(rates);
+interviewQuestion('teacher')('Mark');
+
 
 
 
